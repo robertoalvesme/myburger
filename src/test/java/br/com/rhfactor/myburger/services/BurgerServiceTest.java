@@ -10,7 +10,7 @@ public class BurgerServiceTest {
 	 * Regra: Se o lanche tem alfase e não tem Bacon ganha 10% de desconto
 	 */
 	public void testHasBacon() {
-
+		// Pensar como definir como saber se um ingrediente é bacon sendo que podemos cadastrar tudo dinamicamente?
 	}
 
 	/**
@@ -26,7 +26,6 @@ public class BurgerServiceTest {
 		n = 9 => 6
 		n = 12 => 8
 		*/
-
 		Integer n = 9;
 		if( n % 3 != 0 ) {
 			throw new RuntimeException("Não divisivel por 3");
@@ -36,8 +35,27 @@ public class BurgerServiceTest {
 		assertTrue( n-t == 6);
 	}
 
-	public void hasCheesePromotion() {
 
+	/**
+	 * Regra: Se tem n queijos paga x - sendo n inteiro impar > 2 multiplo de 3
+	 * O número n deve ser a quantidade do desconto  
+	 */
+	public void hasCheesePromotion() {
+		
+		/*
+		n = 3 => 2
+		n = 6 => 4
+		n = 9 => 6
+		n = 12 => 8
+		*/
+		Integer n = 9;
+		if( n % 3 != 0 ) {
+			throw new RuntimeException("Não divisivel por 3");
+		}
+		// Qual é a razão do desconto? Razão é 33% da quantidade.
+		Integer t = ((Double) Math.ceil( n * 0.3333)).intValue();
+		assertTrue( n-t == 6);
+		
 	}
 
 }
