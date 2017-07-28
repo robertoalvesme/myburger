@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.rhfactor</groupId>
 	<artifactId>myburger</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>My Burger Sample</name>
 	<url>https://github.com/robertofonsecabc/myburger</url>
