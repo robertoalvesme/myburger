@@ -19,8 +19,7 @@ public class MenuServiceTest {
 	@Test
 	public void testBuilder() {
 
-		Menu xBacon = new MenuTest.Builder().name("X-Bacon")
-				.addItem(new Special("Bacon", new BigDecimal("2.0")))
+		Menu xBacon = new MenuTest.Builder().name("X-Bacon").addItem(new Special("Bacon", new BigDecimal("2.0")))
 				.addItem(new Meat("Hambúrger de carne", new BigDecimal("4.0")))
 				.addItem(new Cheese("Queijo", new BigDecimal("1.0"))).build();
 		assertThat(xBacon.getIngredients(), hasSize(3));
@@ -29,11 +28,9 @@ public class MenuServiceTest {
 				.addItem(new Meat("Hambúrger de carne", new BigDecimal("4.0")))
 				.addItem(new Cheese("Queijo", new BigDecimal("1.0"))).build();
 		assertThat(xBurger.getIngredients(), hasSize(2));
-		
-		Menu xEgg = new MenuTest.Builder().name("X-Egg")
-				.addItem(new Meat("Hambúrger de carne", new BigDecimal("4.0")))
-				.addItem(new Common("Ovo", new BigDecimal("1.0")))
-				.addItem(new Cheese("Queijo", new BigDecimal("1.0")))
+
+		Menu xEgg = new MenuTest.Builder().name("X-Egg").addItem(new Meat("Hambúrger de carne", new BigDecimal("4.0")))
+				.addItem(new Common("Ovo", new BigDecimal("1.0"))).addItem(new Cheese("Queijo", new BigDecimal("1.0")))
 				.build();
 		assertThat(xEgg.getIngredients(), hasSize(3));
 
@@ -45,5 +42,7 @@ public class MenuServiceTest {
 		assertThat(xEggBacon.getIngredients(), hasSize(4));
 
 	}
+
+
 
 }
