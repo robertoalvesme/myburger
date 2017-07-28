@@ -22,7 +22,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, columnDefinition = "VARCHAR(3) NOT NULL", length = 3, name = "type")
 @DiscriminatorValue(value = "ING")
-public class Ingredient implements IIngredient {
+public abstract class Ingredient implements IIngredient {
 
 	public Ingredient() {
 		super();
