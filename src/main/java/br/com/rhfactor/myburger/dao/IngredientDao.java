@@ -15,7 +15,7 @@ public class IngredientDao extends GenericDao<Ingredient, Integer> implements II
 	}
 
 	public List<Ingredient> listByName() {
-		return this.em.createQuery("SELECT i FROM Ingredient ORDER BY i.name", Ingredient.class)
+		return this.em.createQuery("SELECT i FROM Ingredient i ORDER BY i.name",Ingredient.class)
 				.getResultList();
 	}
 

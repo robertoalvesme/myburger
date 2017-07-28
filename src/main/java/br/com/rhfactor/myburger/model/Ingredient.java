@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,8 +21,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "ingredient")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, columnDefinition = "VARCHAR(3) NOT NULL", length = 3, name = "type")
-public abstract class Ingredient implements IIngredient {
+@DiscriminatorValue("ING")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, length = 3, name = "type" /*,columnDefinition = "VARCHAR(3) NOT NULL"*/ )
+public class Ingredient implements IIngredient {
 
 	public Ingredient() {
 		super();
@@ -47,8 +49,8 @@ public abstract class Ingredient implements IIngredient {
 	@Column(length = 100, nullable = false, unique = true)
 	protected String name;
 
-	@Digits(integer=5, fraction=2)
-	@Column(nullable= false, precision=5, scale=2)
+	// @Digits(integer=5, fraction=2)
+	//@Column(nullable= false, precision=5, scale=2)
 	protected BigDecimal value;
 
 	@Column(insertable = false, updatable = false)

@@ -1,7 +1,9 @@
 package br.com.rhfactor.myburger.dao;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -46,6 +48,12 @@ public class IngredientDaoTest extends DaoTest {
 				.name("Hamburger de Carne")
 				.value("3")
 				.build();
+		
+		this.dao.insert(egg);
+		this.dao.insert(chickenMeat);
+		this.dao.insert(biffMeat);
+		
+		this.flush();
 		
 		List<Ingredient> listByName = this.dao.listByName();
 		
