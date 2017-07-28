@@ -2,6 +2,11 @@ package br.com.rhfactor.myburger.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("SAU")
 public class Sauce extends Ingredient {
 	
 	public Sauce() {
