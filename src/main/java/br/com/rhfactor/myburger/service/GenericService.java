@@ -6,7 +6,7 @@ import br.com.rhfactor.myburger.dao.IGenericDao;
 
 public abstract class GenericService<T, Serial extends Number> implements IGenericService<T, Serial> {
 
-	private final IGenericDao<T, Serial> dao;
+	protected final IGenericDao<T, Serial> dao;
 
 	@SuppressWarnings("unused")
 	private final Class<T> clazz;
