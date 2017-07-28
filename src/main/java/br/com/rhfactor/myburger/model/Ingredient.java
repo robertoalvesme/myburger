@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -46,6 +47,8 @@ public abstract class Ingredient implements IIngredient {
 	@Column(length = 100, nullable = false, unique = true)
 	protected String name;
 
+	@Digits(integer=5, fraction=2)
+	@Column(nullable= false, precision=5, scale=2)
 	protected BigDecimal value;
 
 	@Column(insertable = false, updatable = false)
