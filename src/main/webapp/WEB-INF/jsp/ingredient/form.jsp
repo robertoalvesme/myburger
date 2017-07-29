@@ -9,6 +9,7 @@
 	
 	<form name="formIngredient" id="formIngredient" action="${linkTo[IngredientController].insert()}" method="post" class="form-horizontal" role="form">
 		<input type="hidden" name="ingredient.id" value="${ingredient.id}" />
+		<input type="hidden" name="type" value="${type}" />
 		<c:if test="${ingredient.id gt 0 }">
 			<input type="hidden" name="_method" value="PUT" />
 		</c:if>	

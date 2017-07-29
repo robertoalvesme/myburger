@@ -6,19 +6,32 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.apache.log4j.Logger;
+
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.I18nMessage;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.rhfactor.myburger.model.Cheese;
+import br.com.rhfactor.myburger.model.Common;
+import br.com.rhfactor.myburger.model.IIngredient;
 import br.com.rhfactor.myburger.model.Ingredient;
+import br.com.rhfactor.myburger.model.IngredientTypes;
+import br.com.rhfactor.myburger.model.Meat;
+import br.com.rhfactor.myburger.model.Salad;
+import br.com.rhfactor.myburger.model.Sauce;
+import br.com.rhfactor.myburger.model.Special;
 import br.com.rhfactor.myburger.service.IIngredientService;
 
 @Controller
 @Path("admin/ingredient")
 public class IngredientController {
+
+	private Logger logger = Logger.getLogger(IngredientController.class);
 
 	@Inject
 	private IIngredientService service;
@@ -34,10 +47,14 @@ public class IngredientController {
 
 	@Get("/add")
 	public void form() {
+		this.validator.add(new I18nMessage("invalid.access", "no.ingredient.type"));
+		this.validator.onErrorRedirectTo(this).list();
 	}
-	
+
 	@Get("/add/{type}")
 	public void form(String type) {
+		IngredientTypes typed = IngredientTypes.get(type); // TODO : Adicionar tratativa de erros
+		this.result.include("type", typed);
 	}
 
 	@Get("/{ingredient.id}")
@@ -54,7 +71,8 @@ public class IngredientController {
 	}
 
 	@Put("/")
-	public void update(@NotNull @Valid Ingredient ingredient) {
+	public void update(@NotNull @Valid Ingredient ingredient, @NotNull String type) {
+		this.validator.addIf(type == null, new I18nMessage("invalid.access", "no.ingredient.type"));
 		this.validator.onErrorRedirectTo(this).form(ingredient);
 		this.service.save(ingredient);
 		this.result.include("success", true);

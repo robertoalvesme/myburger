@@ -30,7 +30,7 @@ public class Menu implements Serializable {
 
 	private BigDecimal total = new BigDecimal("0.0");
 
-	private List<IIngredient> ingredients = new ArrayList<IIngredient>();
+	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 	public Integer getId() {
 		return id;
@@ -72,11 +72,11 @@ public class Menu implements Serializable {
 		this.total = total;
 	}
 
-	public List<IIngredient> getIngredients() {
+	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
-	public void setIngredients(List<IIngredient> ingredients) {
+	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
 
