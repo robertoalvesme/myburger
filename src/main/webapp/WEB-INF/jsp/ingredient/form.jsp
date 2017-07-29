@@ -30,12 +30,9 @@
 				<input type="text" class="form-control" id="ingredient_value" name="ingredient.value" placeholder="<fmt:message key='value' />" value="<fmt:formatNumber minFractionDigits="2">${ingredient.value}</fmt:formatNumber>" required />
 			</div>
 		</div>
-		
-		
-		
 		<div class="form-group">
 			<div class="col-md-offset-2 col-sm-10">
-				<input type="submit" class="btn btn-default" value="<fmt:message key='submit' />"/>
+				<input type="submit" class="btn btn-default" value="<fmt:message key='save' />"/>
 			</div>
 		</div>
 	</form>

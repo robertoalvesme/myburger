@@ -10,13 +10,13 @@
 	
 	<h2><fmt:message key='add.new.item' /></h2>
 	<div class="btn-group" role="group">
-		<a class="btn btn-default" href="${linkTo[IngredientController].form('meat')}" role="button" data-toggle="tooltip" data-placement="bottom" title="tooltip.meat"><fmt:message key='meats' /></a>
-		<a class="btn btn-default" href="${linkTo[IngredientController].form('common')}" role="button" data-toggle="tooltip" data-placement="bottom" title="tooltip.common"><fmt:message key='commons' /></a>
-		<a class="btn btn-default" href="${linkTo[IngredientController].form('bread')}" role="button" data-toggle="tooltip" data-placement="bottom" title="tooltip.bread"><fmt:message key='breads' /></a>
-		<a class="btn btn-default" href="${linkTo[IngredientController].form('cheese')}" role="button" data-toggle="tooltip" data-placement="bottom" title="tooltip.cheese"><fmt:message key='cheeses' /></a>
-		<a class="btn btn-default" href="${linkTo[IngredientController].form('salad')}" role="button" data-toggle="tooltip" data-placement="bottom" title="tooltip.salad"><fmt:message key='salads' /></a>
-		<a class="btn btn-default" href="${linkTo[IngredientController].form('sauce')}" role="button" data-toggle="tooltip" data-placement="bottom" title="tooltip.sauce"><fmt:message key='sauces' /></a>
-		<a class="btn btn-default" href="${linkTo[IngredientController].form('special')}" role="button" data-toggle="tooltip" data-placement="bottom" title="tooltip.special"><fmt:message key='specials' /></a>
+		<a class="btn btn-default" href="${linkTo[IngredientController].form('meat')}" role="button" data-toggle="tooltip" data-placement="bottom" title="<fmt:message key='tooltip.meat' />"><fmt:message key='meats' /></a>
+		<a class="btn btn-default" href="${linkTo[IngredientController].form('common')}" role="button" data-toggle="tooltip" data-placement="bottom" title="<fmt:message key='tooltip.common' />"><fmt:message key='commons' /></a>
+		<a class="btn btn-default" href="${linkTo[IngredientController].form('bread')}" role="button" data-toggle="tooltip" data-placement="bottom" title="<fmt:message key='tooltip.bread' />"><fmt:message key='breads' /></a>
+		<a class="btn btn-default" href="${linkTo[IngredientController].form('cheese')}" role="button" data-toggle="tooltip" data-placement="bottom" title="<fmt:message key='tooltip.cheese' />"><fmt:message key='cheeses' /></a>
+		<a class="btn btn-default" href="${linkTo[IngredientController].form('salad')}" role="button" data-toggle="tooltip" data-placement="bottom" title="<fmt:message key='tooltip.salad' />"><fmt:message key='salads' /></a>
+		<a class="btn btn-default" href="${linkTo[IngredientController].form('sauce')}" role="button" data-toggle="tooltip" data-placement="bottom" title="<fmt:message key='tooltip.sauce' />"><fmt:message key='sauces' /></a>
+		<a class="btn btn-default" href="${linkTo[IngredientController].form('special')}" role="button" data-toggle="tooltip" data-placement="bottom" title="<fmt:message key='tooltip.special' />"><fmt:message key='specials' /></a>
 	</div>
 	
 	<div>
@@ -24,10 +24,10 @@
 		<table class="table table-condensed table-hover">
 			<thead>
 				<tr>
-					<th>Ingrediente</th>
+					<th><fmt:message key='name' /></th>
 					<th></th>
-					<th>Valor</th>
-					<th>Ação</th>
+					<th><fmt:message key='value' /></th>
+					<th><fmt:message key='actions' /></th>
 				</tr>
 			</thead>
 			<tbody>
