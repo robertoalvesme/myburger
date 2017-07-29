@@ -7,6 +7,8 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	<persistence-unit name="test">
 		
 		<class>br.com.rhfactor.myburger.model.Ingredient</class>
+		<class>br.com.rhfactor.myburger.model.Menu</class>
+		<class>br.com.rhfactor.myburger.model.MenuIngredient</class>
 	
 		<properties>
 			<property name="hibernate.archive.autodetection" value="class, hbm" />

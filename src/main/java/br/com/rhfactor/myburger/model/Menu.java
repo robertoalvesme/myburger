@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -24,7 +25,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  */
 @Entity
-@Table(name = "menu")
+@Table(name = "menu_item")
 public class Menu implements Serializable {
 
 	/**
@@ -45,6 +46,7 @@ public class Menu implements Serializable {
 
 	private BigDecimal total = new BigDecimal("0.0"); // Permitir que o usuário possa cadastrar o valor
 
+	@OneToMany(orphanRemoval = true, mappedBy = "id.menu")
 	private List<MenuIngredient> ingredients = new ArrayList<MenuIngredient>();
 
 	public Integer getId() {

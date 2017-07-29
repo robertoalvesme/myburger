@@ -29,6 +29,7 @@ public class IngredientDaoTest extends DaoTest {
 		assertTrue(this.getEntityManager().isOpen());
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testListByName() {
 		
