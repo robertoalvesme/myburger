@@ -19,7 +19,7 @@ public class IngredientService extends GenericService<Ingredient, Integer> imple
 	}
 
 	public void save(Ingredient ingredient) {
-		if (ingredient.getId() > 0) {
+		if (ingredient.getId()==null) {
 			this.dao.insert(ingredient);
 		} else {
 			this.dao.update(ingredient);

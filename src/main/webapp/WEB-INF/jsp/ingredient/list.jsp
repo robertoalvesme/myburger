@@ -20,6 +20,29 @@
 	</div>
 	
 	<div>
+	
+		<table class="table table-condensed table-hover">
+			<thead>
+				<tr>
+					<th>Ingrediente</th>
+					<th></th>
+					<th>Valor</th>
+					<th>Ação</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${ingredientList}" var="ingredient">
+				<tr>
+					<td>${ingredient.name}</td>
+					<td><span class="label label-default"><fmt:message key='${ingredient.type}' /></span></td>
+					<td><fmt:formatNumber type="CURRENCY">${ingredient.value}</fmt:formatNumber></td>
+					<td>
+						<a class="btn btn-default" href="${linkTo[IngredientController].form(ingredient)}" role="button"><fmt:message key='edit' /></a>
+					</td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 		
 	
 	</div>

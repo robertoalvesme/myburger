@@ -64,8 +64,7 @@ public class IngredientController {
 	}
 
 	@Put("/")
-	public void update(@NotNull @Valid Ingredient ingredient, @NotNull String type) {
-		this.validator.addIf(type == null, new I18nMessage("invalid.access", "no.ingredient.type"));
+	public void update(@NotNull @Valid Ingredient ingredient) {
 		this.validator.onErrorRedirectTo(this).form(ingredient);
 		this.service.save(ingredient);
 		this.result.include("success", true);

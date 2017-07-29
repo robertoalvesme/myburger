@@ -9,10 +9,15 @@
 	
 	<form name="formIngredient" id="formIngredient" action="${linkTo[IngredientController].insert()}" method="post" class="form-horizontal" role="form">
 		<input type="hidden" name="ingredient.id" value="${ingredient.id}" />
-		<input type="hidden" name="ingredient.type" value="${type}" />
-		<c:if test="${ingredient.id gt 0 }">
-			<input type="hidden" name="_method" value="PUT" />
-		</c:if>	
+		<c:choose>
+			<c:when test="${ingredient.id gt 0 }">
+				<input type="hidden" name="_method" value="PUT" />
+				<input type="hidden" name="ingredient.type" value="${ingredient.type}" />
+			</c:when>
+			<c:otherwise>
+				<input type="hidden" name="ingredient.type" value="${type}" />
+			</c:otherwise>
+		</c:choose>
 		<div class="form-group">
 			<label for="ingredient_name" class="col-sm-2 control-label"><fmt:message key='name' /></label>
 			<div class="col-sm-10">
@@ -22,7 +27,7 @@
 		<div class="form-group">
 			<label for="ingredient_value" class="col-sm-2 control-label"><fmt:message key='value' /></label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="ingredient_value" name="ingredient.value" placeholder="<fmt:message key='value' />" value="${ingredient.value}"/>
+				<input type="text" class="form-control" id="ingredient_value" name="ingredient.value" placeholder="<fmt:message key='value' />" value="<fmt:formatNumber minFractionDigits="2">${ingredient.value}</fmt:formatNumber>"/>
 			</div>
 		</div>
 		
