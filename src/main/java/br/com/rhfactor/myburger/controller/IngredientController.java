@@ -35,6 +35,10 @@ public class IngredientController {
 	@Get("/add")
 	public void form() {
 	}
+	
+	@Get("/add/{type}")
+	public void form(String type) {
+	}
 
 	@Get("/{ingredient.id}")
 	public Ingredient form(@NotNull Ingredient ingredient) {

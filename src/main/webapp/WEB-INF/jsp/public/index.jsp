@@ -9,4 +9,26 @@
 	
 	<a href="${linkTo[IngredientController].list()}">Administração</a>
 	
+	
+	
+	<table class="table table-condensed table-hover">
+		<thead>
+			<tr>
+				<th>Ingrediente</th>
+				<th>Valor</th>
+				<th>Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${ingredientList}" var="ingredient">
+			<tr>
+				<td>${ingredient.name}</td>
+				<td>${ingredient.value}</td>
+				<td></td>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
+	
 </template:public>
