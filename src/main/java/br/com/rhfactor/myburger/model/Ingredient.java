@@ -35,10 +35,11 @@ public class Ingredient implements Serializable {
 		this.name = name;
 	}
 
-	public Ingredient(String name, BigDecimal value) {
+	public Ingredient(String name, BigDecimal value, IngredientTypes type) {
 		super();
 		this.name = name;
 		this.value = value;
+		this.type = type;
 	}
 
 	@Id
@@ -55,7 +56,7 @@ public class Ingredient implements Serializable {
 	protected BigDecimal value;
 
 	@Enumerated
-	@Column(updatable = false, length = 5)
+	@Column(updatable = false, length = 4)
 	private IngredientTypes type;
 
 	public Integer getId() {

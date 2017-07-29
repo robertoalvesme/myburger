@@ -2,25 +2,26 @@ package br.com.rhfactor.myburger.model;
 
 import java.math.BigDecimal;
 
-public class MeatTest {
+public class IngredientTest {
 
 	public static class Builder {
 
-		private Meat meat = new Meat();
+		private Ingredient ingredient = new Ingredient();
 
-		public Meat build() {
-			return this.meat;
+		public Ingredient build() {
+			return this.ingredient;
 		}
 
 		public Builder name(String name) {
-			this.meat.setName(name);
+			this.ingredient.setName(name);
 			return this;
 		}
 
 		public Builder value(String value) {
-			this.meat.setValue(new BigDecimal(value));
+			this.ingredient.setValue(new BigDecimal(value));
 			return this;
 		}
 
 	}
+
 }

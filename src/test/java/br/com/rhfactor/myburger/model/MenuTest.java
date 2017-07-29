@@ -15,7 +15,7 @@ public class MenuTest {
 			return this;
 		}
 
-		public Builder addItem(IIngredient ingredient) {
+		public Builder addItem(Ingredient ingredient) {
 			this.menu.getIngredients().add(ingredient);
 			return this;
 		}

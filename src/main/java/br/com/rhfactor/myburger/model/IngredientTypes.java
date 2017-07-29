@@ -2,7 +2,7 @@ package br.com.rhfactor.myburger.model;
 
 public enum IngredientTypes {
 
-	MT("meat"), CS("chesse"), BD("bread"), CM("common"), SC("sauce"), SD("salad"), SP("special");
+	MEAT("meat"), CHEE("chesse"), BREA("bread"), COMM("common"), SAUC("sauce"), SALA("salad"), SPEC("special");
 
 	IngredientTypes(String description) {
 		this.description = description;

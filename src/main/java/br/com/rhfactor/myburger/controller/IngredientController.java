@@ -16,15 +16,8 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.I18nMessage;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.rhfactor.myburger.model.Cheese;
-import br.com.rhfactor.myburger.model.Common;
-import br.com.rhfactor.myburger.model.IIngredient;
 import br.com.rhfactor.myburger.model.Ingredient;
 import br.com.rhfactor.myburger.model.IngredientTypes;
-import br.com.rhfactor.myburger.model.Meat;
-import br.com.rhfactor.myburger.model.Salad;
-import br.com.rhfactor.myburger.model.Sauce;
-import br.com.rhfactor.myburger.model.Special;
 import br.com.rhfactor.myburger.service.IIngredientService;
 
 @Controller

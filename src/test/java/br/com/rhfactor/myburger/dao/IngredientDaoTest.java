@@ -11,9 +11,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import br.com.rhfactor.myburger.model.Common;
-import br.com.rhfactor.myburger.model.CommonTest;
 import br.com.rhfactor.myburger.model.Ingredient;
+import br.com.rhfactor.myburger.model.IngredientTest;
 
 /**
  * Teste de integração com camada de persistência
@@ -34,17 +33,17 @@ public class IngredientDaoTest extends DaoTest {
 	public void testListByName() {
 		
 		// Criando item
-		Common egg = new CommonTest.Builder()
+		Ingredient egg = new IngredientTest.Builder()
 				.name("Ovo")
 				.value("1")
 				.build();
 		
-		Common chickenMeat = new CommonTest.Builder()
+		Ingredient chickenMeat = new IngredientTest.Builder()
 				.name("Hamburger de Frango")
 				.value("2")
 				.build();
 		
-		Common biffMeat = new CommonTest.Builder()
+		Ingredient biffMeat = new IngredientTest.Builder()
 				.name("Hamburger de Carne")
 				.value("3")
 				.build();
