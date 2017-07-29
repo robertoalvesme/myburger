@@ -10,7 +10,7 @@ public interface IMenuService {
 
 	public abstract List<Menu> listAll();
 
-	public abstract void save(Menu ingredient);
+	public abstract void save(Menu menu);
 
 	public void delete(Menu menu);
 

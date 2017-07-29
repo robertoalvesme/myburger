@@ -13,7 +13,7 @@
 			</ol>
 		</div>
 		<div class="col-md-2 pull-right">
-			<a href="${linkTo[MenuController]}" class="btn btn-default"><fmt:message key='add.new.item'/> <span class="glyphicon glyphicon-plus"></span></a>
+			<a href="${linkTo[MenuController].form()}" class="btn btn-default"><fmt:message key='add.new.item'/> <span class="glyphicon glyphicon-plus"></span></a>
 		</div>
 	</div>
 		
@@ -32,7 +32,7 @@
 				<c:forEach items="${menuList}" var="menu">
 				<tr>
 					<td>${menu.name}</td>
-					<td><span class="label label-default"><fmt:message key='${menu.type.description}' /></span></td>
+					<td><fmt:formatNumber type="CURRENCY">${menu.total}</fmt:formatNumber></td>
 					<td>
 						<a class="btn btn-default" href="${linkTo[MenuController].form(menu)}" role="button"><fmt:message key='edit' /></a>
 					</td>

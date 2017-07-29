@@ -47,7 +47,7 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="${linkTo[AdministrationController].dashboard()}">Home</a></li>
 						<li><a href="${linkTo[IngredientController].list()}"><fmt:message key='ingredients' /></a></li>
-						<li><a href="${linkTo[MenuController].dashboard()}"><fmt:message key='menus' /></a></li>
+						<li><a href="${linkTo[MenuController].list()}"><fmt:message key='menus' /></a></li>
 						<li><a href="${linkTo[AdministrationController].dashboard()}"><fmt:message key='orders' /></a></li>
 						<li class="dropdown">
 					</ul>

@@ -1,5 +1,7 @@
 package br.com.rhfactor.myburger.dao;
 
+import java.util.List;
+
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 
@@ -14,5 +16,7 @@ public interface IMenuDao {
 	public abstract void update(Menu menu) throws PersistenceException;
 
 	public abstract void insert(Menu menu) throws PersistenceException;
+
+	public abstract List<Menu> listByName();
 
 }

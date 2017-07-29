@@ -7,6 +7,9 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	<persistence-unit name="default">
 		
 		<class>br.com.rhfactor.myburger.model.Ingredient</class>
+		<class>br.com.rhfactor.myburger.model.Menu</class>
+		<class>br.com.rhfactor.myburger.model.MenuIngredient</class>
+		<class>br.com.rhfactor.myburger.model.MenuIngredientPK</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 		<properties>
