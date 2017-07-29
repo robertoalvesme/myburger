@@ -7,13 +7,6 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	<persistence-unit name="test">
 		
 		<class>br.com.rhfactor.myburger.model.Ingredient</class>
-		<class>br.com.rhfactor.myburger.model.Bread</class>
-		<class>br.com.rhfactor.myburger.model.Cheese</class>
-		<class>br.com.rhfactor.myburger.model.Meat</class>
-		<class>br.com.rhfactor.myburger.model.Salad</class>
-		<class>br.com.rhfactor.myburger.model.Sauce</class>
-		<class>br.com.rhfactor.myburger.model.Special</class>
-		<class>br.com.rhfactor.myburger.model.Common</class>
 	
 		<properties>
 			<property name="hibernate.archive.autodetection" value="class, hbm" />

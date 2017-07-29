@@ -21,13 +21,13 @@
 		<div class="form-group">
 			<label for="ingredient_name" class="col-sm-2 control-label"><fmt:message key='name' /></label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="ingredient_name" name="ingredient.name" placeholder="<fmt:message key='name' />" value="${ingredient.name}" />
+				<input type="text" class="form-control" id="ingredient_name" name="ingredient.name" placeholder="<fmt:message key='name' />" value="${ingredient.name}" required />
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="ingredient_value" class="col-sm-2 control-label"><fmt:message key='value' /></label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="ingredient_value" name="ingredient.value" placeholder="<fmt:message key='value' />" value="<fmt:formatNumber minFractionDigits="2">${ingredient.value}</fmt:formatNumber>"/>
+				<input type="text" class="form-control" id="ingredient_value" name="ingredient.value" placeholder="<fmt:message key='value' />" value="<fmt:formatNumber minFractionDigits="2">${ingredient.value}</fmt:formatNumber>" required />
 			</div>
 		</div>
 		
