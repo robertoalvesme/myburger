@@ -3,7 +3,7 @@ package br.com.rhfactor.myburger.model;
 public class MenuTest {
 
 	public static class Builder {
-		
+
 		private Menu menu = new Menu();
 
 		public Menu build() {
@@ -16,7 +16,7 @@ public class MenuTest {
 		}
 
 		public Builder addItem(Ingredient ingredient) {
-			this.menu.getIngredients().add(ingredient);
+			this.menu.getIngredients().add(new MenuIngredient(ingredient, this.menu));
 			return this;
 		}
 

@@ -5,6 +5,16 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * Classe que representa um item de nosso menu, incluindo seus subitens para
  * calcular seu valor, que poderá ser modificado pelo usuário que o está
@@ -13,6 +23,8 @@ import java.util.List;
  * @author roberto
  *
  */
+@Entity
+@Table(name = "menu")
 public class Menu implements Serializable {
 
 	/**
@@ -20,17 +32,20 @@ public class Menu implements Serializable {
 	 */
 	private static final long serialVersionUID = 2143791560090634919L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@NotNull
+	@NotEmpty
+	@Column(length = 100, nullable = false, unique = true)
 	private String name;
 
-	private BigDecimal subtotal = new BigDecimal("0.0");
+	private BigDecimal subtotal = new BigDecimal("0.0"); // Exibir o valor real dos itens
 
-	private BigDecimal discounts = new BigDecimal("0.0");
+	private BigDecimal total = new BigDecimal("0.0"); // Permitir que o usuário possa cadastrar o valor
 
-	private BigDecimal total = new BigDecimal("0.0");
-
-	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+	private List<MenuIngredient> ingredients = new ArrayList<MenuIngredient>();
 
 	public Integer getId() {
 		return id;
@@ -56,14 +71,6 @@ public class Menu implements Serializable {
 		this.subtotal = subtotal;
 	}
 
-	public BigDecimal getDiscounts() {
-		return discounts;
-	}
-
-	public void setDiscounts(BigDecimal discounts) {
-		this.discounts = discounts;
-	}
-
 	public BigDecimal getTotal() {
 		return total;
 	}
@@ -72,11 +79,11 @@ public class Menu implements Serializable {
 		this.total = total;
 	}
 
-	public List<Ingredient> getIngredients() {
+	public List<MenuIngredient> getIngredients() {
 		return ingredients;
 	}
 
-	public void setIngredients(List<Ingredient> ingredients) {
+	public void setIngredients(List<MenuIngredient> ingredients) {
 		this.ingredients = ingredients;
 	}
 
