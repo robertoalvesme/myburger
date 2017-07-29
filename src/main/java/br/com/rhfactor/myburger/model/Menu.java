@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public class Menu implements Serializable {
 
 	private BigDecimal total = new BigDecimal("0.0"); // Permitir que o usuário possa cadastrar o valor
 
-	@OneToMany(orphanRemoval = true, mappedBy = "id.menu")
+	@OneToMany(orphanRemoval = true, mappedBy = "id.menu",cascade=CascadeType.ALL)
 	private List<MenuIngredient> ingredients = new ArrayList<MenuIngredient>();
 
 	public Integer getId() {
