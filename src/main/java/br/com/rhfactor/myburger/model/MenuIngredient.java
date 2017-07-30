@@ -13,6 +13,7 @@ import javax.validation.constraints.Min;
 public class MenuIngredient implements Serializable {
 	
 	public MenuIngredient() {
+		this.id = new MenuIngredientPK();
 	}
 	
 	public MenuIngredient(Ingredient ingredient, Menu menu) {
@@ -77,6 +78,11 @@ public class MenuIngredient implements Serializable {
 		} else if (!quantity.equals(other.quantity))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return " { id [ id : " + this.id.toString() + " , quantity : " + quantity+ " ] } " + super.toString();
 	}
 
 }

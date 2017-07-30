@@ -1,6 +1,7 @@
 $dom = {
 		menuIngredients : $('#menuIngredients')
 		, modaIngredients : $('#modaIngredients')
+		, menuId : $('#menu_id').val()
 		, deleting : false
 		, updating : false
 }
@@ -66,7 +67,8 @@ add = function(){
 	var newIngredient = $('#newIngredient');
 	var menuId = $('#menu_id').val();
 	newIngredient.children().remove()
-	$.get($page.url + 'json/menu/'+ menuId +'/ingredients',function(data){
+	$('#newIngredientQuantity').val(1);
+	$.get($page.url + 'json/menu/'+ $dom.menuId +'/ingredients',function(data){
 		for(i in data){
 			newIngredient.append($('<option>', { 
 				value: data[i].id,
@@ -75,6 +77,42 @@ add = function(){
 		}
 		$dom.modaIngredients.modal('show');
 	})
-	
-	
 }
+
+saveItem = function(){
+	var menuId = $dom.menuId;
+	var ingredientField = $('#newIngredient');
+	var ingredientId = ingredientField.val();
+	var quantity = $('#newIngredientQuantity').val();
+	
+	Mustache.parse($dom.templateIngredientList);
+	
+	var item = {
+		ingredient : {
+			name : ingredientField.find('option:selected').text(),
+			quantity : quantity,
+			id : ingredientId,
+			parent : menuId
+		},
+		index : $dom.menuIngredients.find('.ingredient').length
+	};
+	
+	$.ajax({
+		type: "POST",
+		url: $page.url + 'json/menu/'+ menuId + '/ingredient/' + ingredientId + '/' +  quantity ,
+		dataType : 'json',
+		contentType: "application/json",
+		success : function(data){
+			$dom.menuIngredients.append( Mustache.render( $('#templateIngredientList').html() , item ) );
+			$dom.modaIngredients.modal('hide');
+		}, 
+		error : function(error){
+			console.log('Erro'); // TODO : Melhorar mensagem de erro
+			console.log(error);
+		},
+		always: function(){
+			$dom.modaIngredients.modal('hide');
+		}
+	});
+}
+

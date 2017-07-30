@@ -10,4 +10,6 @@ public interface IMenuIngredientDao {
 
 	public abstract MenuIngredient get(Integer menuId, Integer ingredientId);
 
+	public abstract void insert(MenuIngredient menuIngredient);
+
 }

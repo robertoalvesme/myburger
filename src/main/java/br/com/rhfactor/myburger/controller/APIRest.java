@@ -8,11 +8,14 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.rhfactor.myburger.model.Ingredient;
 import br.com.rhfactor.myburger.model.Menu;
+import br.com.rhfactor.myburger.model.MenuIngredient;
 import br.com.rhfactor.myburger.service.IIngredientService;
 import br.com.rhfactor.myburger.service.IMenuIngredientService;
 
@@ -31,6 +34,9 @@ public class APIRest {
 	@Inject
 	private Result result;
 	
+	@Inject
+	private Validator validator;
+	
 	@Get("menu/{menu.id}/ingredients")
 	public void listIngredients(Menu menu) {
 		this.result.use(Results.json())
@@ -38,6 +44,20 @@ public class APIRest {
 			.from(this.ingredientService.listNotIn(menu))
 			.exclude("value","type")
 			.serialize();
+	}
+	
+	@Post("menu/{menu.id}/ingredient/{ingredient.id}/{quantity}")
+	public void addIngredient( Menu menu , Ingredient ingredient , Integer quantity ) {
+		this.validator.onErrorSendBadRequest();
+		try {
+			logger.debug("Salvar item");
+			MenuIngredient menuIngredient = this.menuIngredientService.save(menu.getId(), ingredient.getId(), quantity);
+			this.result.use(Results.json()).withoutRoot().from(menuIngredient).serialize();
+		} catch (Exception e) {
+			logger.error(e);
+			e.printStackTrace();
+			this.result.use(Results.http()).setStatusCode(500);
+		}
 	}
 	
 	@Put("menu/{menu.id}/ingredient/{ingredient.id}/{quantity}")

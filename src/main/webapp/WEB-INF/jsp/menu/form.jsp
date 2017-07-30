@@ -17,16 +17,19 @@
 		</script>
 		<script src="<c:url value='/js/admin.menu.form.js' />"></script>
 		<script id="templateIngredientList" type="x-tmpl-mustache">
-			<div class="form-group ingredient" id="item_{{ index }}">
-				<input type="hidden" name="menu.ingredients[{{ index }}].id.ingredient.id" value="${menuIngredient.id.ingredient.id}" />
-				<div class="col-sm-9">
+			<div class="form-group ingredient" data-menu="{{ ingredient.parent }}" data-ingredient="{{ ingredient.id }}" id="item_{{ index }}">
+				<input type="hidden" name="menu.ingredients[{{ index }}].id.ingredient.id" value="{{ ingredient.id }}" />
+				<div class="col-sm-7">
 					 <p class="form-control-static">{{ ingredient.name }}</p>
 				</div>
 				<div class="col-sm-2">
 					<input type="number" min="1" max="15" class="form-control" required name="menu.ingredients[{{ index }}].quantity" id="menu_ingredients_{{ index }}_quantity" placeholder="<fmt:message key='quantity' />" value="{{ ingredient.quantity }}" required />
 				</div>
-				<div class="col-sm-1">
-					<a class="btn btn-default" href="#" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+				<div class="col-sm-3">
+					<div class="btn-group">
+						<a class="btn btn-default" href="javascript:void(0);" onclick="changeQuantity('item_{{index}}');" role="button"><span class="glyphicon glyphicon-refresh"></span></a>
+						<a class="btn btn-default" href="javascript:void(0);" onclick="remove('item_{{index}}');" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+					</div>
 				</div>
 			</div>	
 		</script>
@@ -37,7 +40,7 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" onClick="clearModal();" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<h4 class="modal-title"><fmt:message key='add.new.item' /></h4>
 					</div>
 					<div class="modal-body">
@@ -56,7 +59,7 @@
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal" onClick="clearModal();"><fmt:message key='close' /></button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"><fmt:message key='close' /></button>
 						<button type="button" class="btn btn-primary" onClick="saveItem();" ><fmt:message key='add' /></button>
 					</div>
 				</div>

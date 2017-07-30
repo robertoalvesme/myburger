@@ -41,5 +41,10 @@ public class MenuIngredientDao implements IMenuIngredientDao {
 	public void delete(Integer menuId, Integer ingredientId) {
 		this.em.remove( this.get(menuId, ingredientId) );
 	}
+
+	@Override
+	public void insert(MenuIngredient menuIngredient) {
+		this.em.persist(menuIngredient);
+	}
 	
 }

@@ -10,4 +10,6 @@ public interface IMenuIngredientService {
 
 	public abstract MenuIngredient get(Integer menuId, Integer ingredientId);
 
+	public abstract MenuIngredient save(Integer menuId, Integer ingredientId, Integer quantity);
+
 }
