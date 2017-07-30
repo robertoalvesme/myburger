@@ -38,34 +38,26 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" onClick="clearModal();" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">Todo List</h4>
+						<h4 class="modal-title"><fmt:message key='add.new.item' /></h4>
 					</div>
 					<div class="modal-body">
 						<form name="formTodo" id="formTodo" class="form-horizontal" method="POST">
-							
-						
 							<div class="form-group">
-								<label for="recipient-name" class="col-sm-2 control-label">Name:</label>
-								<div class="col-sm-9">
-									<input class="form-control" type="text" name="name" id="name" value="">
+								<label for="recipient-name" class="col-sm-2 control-label"><fmt:message key='ingredient' /></label>
+								<div class="col-sm-6">
+									<select class="form-control" name="newIngredient" id="newIngredient">
+										<option value="1">oi</option>
+									</select>
 								</div>
-							</div>
-							
-							<hr/>
-							<div class="row">
-								<div class="col-xs-12">
-									 <button type="button" class="btn btn-default" onclick="addItem();"> <i class="glyphicon glyphicon-plus"></i> Adicionar Item</button>
+								<div class="col-sm-2">
+									<input class="form-control" type="number" name="newIngredientQuantity" id="newIngredientQuantity" value="1" />
 								</div>
-							</div>
-							<hr/>
-							<div id="itemContent">
-								
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal" onClick="clearModal();">Close</button>
-						<button type="button" class="btn btn-primary" onClick="saveTodo();" >Save changes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" onClick="clearModal();"><fmt:message key='close' /></button>
+						<button type="button" class="btn btn-primary" onClick="saveItem();" ><fmt:message key='add' /></button>
 					</div>
 				</div>
 			</div>
@@ -87,7 +79,7 @@
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane active" id="home">
 							<form name="formMenu" id="formMenu" action="${linkTo[MenuController].insert()}" method="post" class="form-horizontal" role="form">
-								<input type="hidden" name="menu.id" value="${menu.id}" />
+								<input type="hidden" name="menu.id" id="menu_id" value="${menu.id}" />
 								<c:if test="${menu.id gt 0 }">
 									<input type="hidden" name="_method" value="PUT" />
 								</c:if>
@@ -119,22 +111,24 @@
 						<div role="tabpanel" class="tab-pane" id="ingredients">
 							<div class="row">
 								<div class="col-xs-offset-8 col-xs-2">
-									<a class="btn btn-default" href="#" onclick="chooseItem();" role="button"><fmt:message key='add.new.item' /></a>
+									<a class="btn btn-default" href="#" onclick="add();" role="button"><fmt:message key='add.new.item' /></a>
 								</div>
 							</div>
 							<hr />
 							<div id="menuIngredients">
 								<c:forEach items="${menu.ingredients}" var="menuIngredient" varStatus="x">
 									<div class="form-group ingredient" data-menu="${menu.id}" data-ingredient="${menuIngredient.id.ingredient.id}" id="item_${x.index}">
-										<div class="col-sm-9">
+										<div class="col-sm-7">
 											 <p class="form-control-static">${menuIngredient.id.ingredient.name}</p>
 										</div>
 										<div class="col-sm-2">
 											<input type="number" min="1" max="15" class="form-control" onchange="changeQuantity('item_${x.index}');" name="menu.ingredients[${x.index}].quantity" id="menu_ingredients_${x.index}_quantity" placeholder="<fmt:message key='quantity' />" value="${menuIngredient.quantity}" required />
 										</div>
-										<div class="col-sm-1">
-											<a class="btn btn-default" href="javascript:void(0);" onclick="changeQuantity('item_${x.index}');" role="button"><span class="glyphicon glyphicon-refresh"></span></a>
-											<a class="btn btn-default" href="javascript:void(0);" onclick="remove('item_${x.index}');" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+										<div class="col-sm-3">
+											<div class="btn-group">
+												<a class="btn btn-default" href="javascript:void(0);" onclick="changeQuantity('item_${x.index}');" role="button"><span class="glyphicon glyphicon-refresh"></span></a>
+												<a class="btn btn-default" href="javascript:void(0);" onclick="remove('item_${x.index}');" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+											</div>
 										</div>
 									</div>
 								</c:forEach>

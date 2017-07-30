@@ -1,12 +1,9 @@
 $dom = {
 		menuIngredients : $('#menuIngredients')
+		, modaIngredients : $('#modaIngredients')
 		, deleting : false
 		, updating : false
 }
-
-//add = function(){
-//	
-//}
 
 changeQuantity = function(target){
 	
@@ -65,3 +62,19 @@ remove = function(target){
 	});
 }
 
+add = function(){
+	var newIngredient = $('#newIngredient');
+	var menuId = $('#menu_id').val();
+	newIngredient.children().remove()
+	$.get($page.url + 'json/menu/'+ menuId +'/ingredients',function(data){
+		for(i in data){
+			newIngredient.append($('<option>', { 
+				value: data[i].id,
+				text : data[i].name
+			}));
+		}
+		$dom.modaIngredients.modal('show');
+	})
+	
+	
+}

@@ -31,11 +31,11 @@ public class APIRest {
 	@Inject
 	private Result result;
 	
-	@Get("ingredients")
-	public void listIngredients() {
+	@Get("menu/{menu.id}/ingredients")
+	public void listIngredients(Menu menu) {
 		this.result.use(Results.json())
 			.withoutRoot()
-			.from(this.ingredientService.listAll())
+			.from(this.ingredientService.listNotIn(menu))
 			.exclude("value","type")
 			.serialize();
 	}
