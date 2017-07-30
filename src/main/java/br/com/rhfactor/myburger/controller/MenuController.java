@@ -67,7 +67,7 @@ public class MenuController {
 		Menu menuDB = this.menuService.get(menu.getId());
 		menuDB.setName(menu.getName());
 		menuDB.setTotal(menu.getTotal());
-		menu.setUrl(menu.getUrl());
+		menuDB.setUrl(menu.getUrl());
 		
 		this.menuService.save(menuDB);
 		this.result.include("success", true);

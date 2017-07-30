@@ -4,14 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib tagdir="/WEB-INF/tags/public" prefix="template" %>
 <template:public>
-	
-	<h1>Listagem</h1>
-	
-	<a href="${linkTo[IngredientController].list()}">Administração</a>
-	
-	
-	
-	
-	
+
+	<div class="row">
+		<c:forEach items="${menuList}" var="item" >
+			<div class="col-md-3">
+				<div>
+					<h3>${item.name}</h3>
+					<img src="${item.url}" class="img-responsive img-rounded" />
+					<hr/>
+					<h4><span class="label label-success"><fmt:formatNumber type="CURRENCY">${item.total}</fmt:formatNumber></span></h4>
+				</div>
+			</div>
+		</c:forEach>
+	</div>	
 	
 </template:public>

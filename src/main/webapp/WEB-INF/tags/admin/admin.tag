@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<link rel="stylesheet" href="<c:url value='/js/admin.main.css' />" />
+<link rel="stylesheet" href="<c:url value='/css/admin.main.css' />" />
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -46,10 +46,10 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="${linkTo[AdministrationController].dashboard()}">Home</a></li>
+						<li><a href="${linkTo[AdministrationController].dashboard()}">Home</a></li>
 						<li><a href="${linkTo[IngredientController].list()}"><fmt:message key='ingredients' /></a></li>
 						<li><a href="${linkTo[MenuController].list()}"><fmt:message key='menus' /></a></li>
-						<li><a href="${linkTo[AdministrationController].dashboard()}"><fmt:message key='orders' /></a></li>
+						<%-- <li><a href="${linkTo[AdministrationController].dashboard()}"><fmt:message key='orders' /></a></li> --%>
 						<li class="dropdown">
 					</ul>
 					<ul class="nav navbar-nav navbar-right">

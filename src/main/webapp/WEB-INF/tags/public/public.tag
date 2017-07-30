@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="<c:url value='/css/public.main.css' />" />
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -45,9 +46,10 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="${linkTo[PublicController].index()}">Home</a></li>
+						<li><a href="${linkTo[PublicController].index()}">Menu</a></li>
 						<li><a href="${linkTo[PublicController].youChoose()}"><fmt:message key='choose.yours' /></a></li>
-						<li><a href="${linkTo[PublicController].cart()}"><fmt:message key='cart' /></a></li>
+						<%-- <li><a href="${linkTo[PublicController].cart()}"><fmt:message key='cart' /></a></li> --%>
+						<li><a href="${linkTo[AdministrationController].dashboard()}">Administrar sistema</a></li>
 						<li class="dropdown">
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -56,7 +58,7 @@
 			</div>
 		</nav>
 	</header>
-	<div class="container">
+	<div class="container" id="content-main">
 	
 		<%-- Se tiver erros exibir aqui --%>
 		<c:if test="${fn:length(errors) gt 0}">
@@ -72,7 +74,7 @@
 		
 		<jsp:doBody />
 	</div>
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
