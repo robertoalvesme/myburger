@@ -62,6 +62,22 @@ public class Ingredient implements Serializable {
 	@Enumerated
 	@Column(updatable = false, length = 4)
 	private IngredientTypes type;
+	
+	// 
+	
+	public boolean isSalad() {
+		return type.equals(IngredientTypes.SALA);
+	}
+	
+	public boolean isSpecial() {
+		return type.equals(IngredientTypes.SPEC);
+	}
+	
+	public boolean hasDiscount() {
+		return type.equals(IngredientTypes.MEAT) || type.equals(IngredientTypes.CHEE);
+	}
+	
+	// Getters and Setters
 
 	public Integer getId() {
 		return id;
@@ -142,5 +158,7 @@ public class Ingredient implements Serializable {
 	public void setUsed(Boolean used) {
 		this.used = used;
 	}
+
+	
 
 }

@@ -22,6 +22,16 @@ public class IngredientTest {
 			return this;
 		}
 
+		public Builder type(String type) {
+			this.ingredient.setType(IngredientTypes.get(type));
+			return this;
+		}
+
+		public Builder type(IngredientTypes type) {
+			this.ingredient.setType(type);
+			return this;
+		}
+
 	}
 
 }
