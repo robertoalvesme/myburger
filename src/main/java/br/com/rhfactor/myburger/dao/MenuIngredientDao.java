@@ -30,9 +30,10 @@ public class MenuIngredientDao implements IMenuIngredientDao {
 
 	@Override
 	public void update( Integer menuId, Integer ingredientId , Integer quantity ) {
-		this.em.createNativeQuery("UPDATE menu_ingredients SET quantity = :quantity WHERE mi.menu_id = 1 and mi.ingredient_id = 1")
+		this.em.createNativeQuery("UPDATE menu_ingredients mi SET quantity = :quantity WHERE mi.menu_id = :menuId and mi.ingredient_id = :ingredientId")
 			.setParameter("menuId", menuId)
 			.setParameter("ingredientId", ingredientId)
+			.setParameter("quantity", quantity)
 			.executeUpdate();
 	}
 

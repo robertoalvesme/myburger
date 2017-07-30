@@ -4,18 +4,44 @@ $dom = {
 		, updating : false
 }
 
-add = function(){
+//add = function(){
+//	
+//}
+
+changeQuantity = function(target){
 	
+	console.log("Alterar")
+	
+//	if( $dom.updating ){
+//		return;
+//	}
+	var target = $('#' + target);
+	var menuId = target.attr('data-menu');
+	var ingredientId = target.attr('data-ingredient');
+	var quantity = target.find('input').val();
+	$.ajax({
+		type: "PUT",
+		url: $page.url + 'json/menu/'+ menuId + '/ingredient/' + ingredientId + '/' +  quantity ,
+		dataType : 'json',
+		contentType: "application/json",
+		success : function(){
+			// Não fazer nada
+		}, 
+		error : function(error){
+			console.log('Erro');  // TODO : Melhorar mensagem de erro
+			console.log(error);
+		},
+		always: function(){
+			$dom.updating = false;
+		}
+	});
 }
 
 remove = function(target){
-	
-	if( $dom.deleting ){
-		return;
-	}
-	
+//	if( $dom.deleting ){
+//		return;
+//	}
 	$dom.deleting = true;
-	
 	var target = $('#' + target);
 	var menuId = target.attr('data-menu');
 	var ingredientId = target.attr('data-ingredient');
@@ -30,7 +56,7 @@ remove = function(target){
 			})
 		}, 
 		error : function(error){
-			console.log('Erro');
+			console.log('Erro'); // TODO : Melhorar mensagem de erro
 			console.log(error);
 		},
 		always: function(){
@@ -39,8 +65,3 @@ remove = function(target){
 	});
 }
 
-changeQuantity = function( object ){
-	if( object.value <= 0 ){
-		console.log( object.parentElement.parentElement.getAttribute('id') );
-	}
-}

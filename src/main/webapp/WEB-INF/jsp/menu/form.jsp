@@ -133,6 +133,7 @@
 											<input type="number" min="1" max="15" class="form-control" onchange="changeQuantity('item_${x.index}');" name="menu.ingredients[${x.index}].quantity" id="menu_ingredients_${x.index}_quantity" placeholder="<fmt:message key='quantity' />" value="${menuIngredient.quantity}" required />
 										</div>
 										<div class="col-sm-1">
+											<a class="btn btn-default" href="javascript:void(0);" onclick="changeQuantity('item_${x.index}');" role="button"><span class="glyphicon glyphicon-refresh"></span></a>
 											<a class="btn btn-default" href="javascript:void(0);" onclick="remove('item_${x.index}');" role="button"><span class="glyphicon glyphicon-remove"></span></a>
 										</div>
 									</div>

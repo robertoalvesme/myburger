@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
 import br.com.rhfactor.myburger.model.Ingredient;
@@ -37,6 +38,17 @@ public class APIRest {
 			.from(this.ingredientService.listAll())
 			.exclude("value","type")
 			.serialize();
+	}
+	
+	@Put("menu/{menu.id}/ingredient/{ingredient.id}/{quantity}")
+	public void changeQuantity( Menu menu , Ingredient ingredient , Integer quantity ) {
+		try {
+			this.menuIngredientService.update(menu.getId(), ingredient.getId(), quantity);
+			this.result.use(Results.json()).from(true,"status").serialize();
+		} catch (Exception e) {
+			logger.debug(e);
+			this.result.use(Results.http()).setStatusCode(500);
+		}
 	}
 	
 	@Delete("menu/{menu.id}/ingredient/{ingredient.id}")
