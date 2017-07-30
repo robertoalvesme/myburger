@@ -26,9 +26,9 @@ public class MenuController {
 	private Logger logger = Logger.getLogger(MenuController.class);
 	
 	@Inject
-	private IIngredientService ingredientService;
-	@Inject
 	private IMenuService menuService;
+	@Inject
+	private IIngredientService ingredientService;
 	@Inject
 	private Validator validator;
 	@Inject
@@ -46,8 +46,9 @@ public class MenuController {
 
 	@Get("/{menu.id}")
 	public Menu form(@NotNull Menu menu) {
-		this.result.include("ingredientList",this.ingredientService.listAll());
-		return this.menuService.get(menu.getId());
+		menu = this.menuService.get(menu.getId());
+		this.result.include("ingredientList",this.ingredientService.listNotIn(menu));
+		return menu;
 	}
 
 	@Post("/")
@@ -60,6 +61,7 @@ public class MenuController {
 
 	@Put("/")
 	public void update(@NotNull @Valid Menu menu) {
+		logger.debug("Update menu.id : " + menu.getId() );
 		this.validator.onErrorRedirectTo(this).form(menu);
 		this.menuService.save(menu);
 		this.result.include("success", true);

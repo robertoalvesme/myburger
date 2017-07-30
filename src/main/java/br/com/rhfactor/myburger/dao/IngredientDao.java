@@ -19,4 +19,12 @@ public class IngredientDao extends GenericDao<Ingredient, Integer> implements II
 				.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Ingredient> listNotIn(Integer menuId) {
+		return this.em.createNativeQuery("SELECT i.* FROM ingredient i WHERE i.id NOT IN ( SELECT DISTINCT ingredient_id FROM menu_ingredients WHERE menu_id = :menuId )",Ingredient.class)
+				.setParameter("menuId", menuId)
+				.getResultList();
+	}
+
 }

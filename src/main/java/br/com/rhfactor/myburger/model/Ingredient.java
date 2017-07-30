@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -54,6 +55,9 @@ public class Ingredient implements Serializable {
 	// @Digits(integer=5, fraction=2)
 	// @Column(nullable= false, precision=5, scale=2)
 	protected BigDecimal value;
+
+	@Transient
+	private Boolean used = false;
 
 	@Enumerated
 	@Column(updatable = false, length = 4)
@@ -129,6 +133,14 @@ public class Ingredient implements Serializable {
 
 	public void setType(IngredientTypes type) {
 		this.type = type;
+	}
+
+	public Boolean getUsed() {
+		return used;
+	}
+
+	public void setUsed(Boolean used) {
+		this.used = used;
 	}
 
 }

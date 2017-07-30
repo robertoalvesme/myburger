@@ -4,10 +4,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.log4j.Logger;
+
+import br.com.rhfactor.myburger.controller.MenuController;
 import br.com.rhfactor.myburger.dao.IMenuDao;
 import br.com.rhfactor.myburger.model.Menu;
+import br.com.rhfactor.myburger.model.MenuIngredient;
 
 public class MenuService implements IMenuService {
+	
+	private Logger logger = Logger.getLogger(MenuService.class);
 
 	@Deprecated
 	public MenuService() {
@@ -34,6 +40,14 @@ public class MenuService implements IMenuService {
 
 	@Override
 	public void save(Menu menu) {
+		
+		for( MenuIngredient item : menu.getIngredients() ) {
+			item.getId().setMenu(menu);
+			if( item.getQuantity() <= 0 ) {
+				menu.getIngredients().remove(item);
+			}
+		}
+		
 		if (menu.getId() == null) {
 			this.dao.insert(menu);
 		} else {

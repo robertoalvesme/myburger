@@ -8,4 +8,6 @@ public interface IIngrentDao extends IGenericDao<Ingredient, Integer> {
 
 	public abstract List<Ingredient> listByName();
 
+	public abstract List<Ingredient> listNotIn(Integer id);
+
 }

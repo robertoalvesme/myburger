@@ -7,10 +7,10 @@
 		</layout>
 	</appender>
 	<category name="br.com.caelum.vraptor">
-		<priority value="DEBUG" />
+		<priority value="ERROR" />
 		<appender-ref ref="stdout" />
 	</category>
-	<category name="br.com.rhfactor">
+	<category name="br.com.rhfactor.myburger">
 		<priority value="DEBUG" />
 		<appender-ref ref="stdout" />
 	</category>

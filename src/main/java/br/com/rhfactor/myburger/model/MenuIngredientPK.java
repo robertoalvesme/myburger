@@ -47,34 +47,8 @@ public class MenuIngredientPK implements Serializable {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((ingredient == null) ? 0 : ingredient.hashCode());
-		result = prime * result + ((menu == null) ? 0 : menu.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MenuIngredientPK other = (MenuIngredientPK) obj;
-		if (ingredient == null) {
-			if (other.ingredient != null)
-				return false;
-		} else if (!ingredient.equals(other.ingredient))
-			return false;
-		if (menu == null) {
-			if (other.menu != null)
-				return false;
-		} else if (!menu.equals(other.menu))
-			return false;
-		return true;
+	public String toString() {
+		return "MenuIngredientId={ ingredient.id = " + this.ingredient.getId() + ", menu.id: " + this.menu.getId() + " }" +  super.toString();
 	}
 
 }

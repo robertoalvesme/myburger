@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import br.com.rhfactor.myburger.dao.IIngrentDao;
 import br.com.rhfactor.myburger.model.Ingredient;
+import br.com.rhfactor.myburger.model.Menu;
 
 public class IngredientService extends GenericService<Ingredient, Integer> implements IIngredientService {
 
@@ -24,6 +25,11 @@ public class IngredientService extends GenericService<Ingredient, Integer> imple
 		} else {
 			this.dao.update(ingredient);
 		}
+	}
+
+	@Override
+	public List<Ingredient> listNotIn(Menu menu) {
+		return ((IIngrentDao) this.dao).listNotIn(menu.getId());
 	}
 
 }
