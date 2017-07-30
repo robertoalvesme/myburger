@@ -49,7 +49,6 @@
 								<label for="recipient-name" class="col-sm-2 control-label"><fmt:message key='ingredient' /></label>
 								<div class="col-sm-6">
 									<select class="form-control" name="newIngredient" id="newIngredient">
-										<option value="1">oi</option>
 									</select>
 								</div>
 								<div class="col-sm-2">
@@ -93,11 +92,20 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label for="menu_url" class="col-sm-2 control-label"><fmt:message key='image' /></label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="menu_url" name="menu.url" placeholder="<fmt:message key='url' />" value="${menu.url}" required />
+									</div>
+								</div>
+								<!-- TODO : Fazer calculo para Subtotal -->
+								<%--
+								<div class="form-group">
 									<label for="menu_subtotal" class="col-sm-2 control-label"><fmt:message key='subtotal' /></label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="menu_subtotal" name="menu.subtotal" placeholder="<fmt:message key='subtotal' />" value="<fmt:formatNumber minFractionDigits="2">${menu.subtotal}</fmt:formatNumber>" readonly />
 									</div>
 								</div>
+								 --%>
 								<div class="form-group">
 									<label for="menu_value" class="col-sm-2 control-label"><fmt:message key='total' /></label>
 									<div class="col-sm-10">

@@ -63,7 +63,13 @@ public class MenuController {
 	public void update(@NotNull @Valid Menu menu) {
 		logger.debug("Update menu.id : " + menu.getId() );
 		this.validator.onErrorRedirectTo(this).form(menu);
-		this.menuService.save(menu);
+		
+		Menu menuDB = this.menuService.get(menu.getId());
+		menuDB.setName(menu.getName());
+		menuDB.setTotal(menu.getTotal());
+		menu.setUrl(menu.getUrl());
+		
+		this.menuService.save(menuDB);
 		this.result.include("success", true);
 		this.result.redirectTo(this).list();
 	}

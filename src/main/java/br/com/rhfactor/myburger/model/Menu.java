@@ -50,6 +50,9 @@ public class Menu implements Serializable {
 	@OneToMany(orphanRemoval = true, mappedBy = "id.menu", cascade = CascadeType.ALL)
 	private List<MenuIngredient> ingredients = new ArrayList<MenuIngredient>();
 
+	@Column(length = 250, nullable = true)
+	private String url;
+
 	public Integer getId() {
 		return id;
 	}
@@ -90,6 +93,14 @@ public class Menu implements Serializable {
 		this.ingredients = ingredients;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -99,6 +110,7 @@ public class Menu implements Serializable {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((subtotal == null) ? 0 : subtotal.hashCode());
 		result = prime * result + ((total == null) ? 0 : total.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
 	}
 
@@ -135,6 +147,11 @@ public class Menu implements Serializable {
 			if (other.total != null)
 				return false;
 		} else if (!total.equals(other.total))
+			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
 			return false;
 		return true;
 	}
